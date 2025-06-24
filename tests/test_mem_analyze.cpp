@@ -11,7 +11,7 @@
 
 #include <gtest/gtest.h>
 
-#include "utils/mem_analyze.hpp"
+#include "common_utils/mem_analyze.hpp"
 
 class MemoryAnalyzeTest : public ::testing::Test {
 protected:
@@ -20,7 +20,7 @@ protected:
 };
 
 TEST_F(MemoryAnalyzeTest, Normal) {
-  utils::MemoryAnalyzer analyzer;
+  common_utils::MemoryAnalyzer analyzer;
   auto result = analyzer.analyze([]() {
     std::vector<int> largeVector(1000000);
     std::fill(largeVector.begin(), largeVector.end(), 66);
@@ -29,7 +29,7 @@ TEST_F(MemoryAnalyzeTest, Normal) {
 }
 
 TEST_F(MemoryAnalyzeTest, MemLeak) {
-  utils::MemoryAnalyzer analyzer;
+  common_utils::MemoryAnalyzer analyzer;
   auto result = analyzer.analyze([]() {
     // 4byte x 20M
     size_t size = 20 * 1024 * 1024;

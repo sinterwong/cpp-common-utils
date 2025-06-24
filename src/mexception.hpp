@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <variant>
 
-namespace utils::exception {
+namespace common_utils::exception {
 template <typename T, typename... Ts>
 const T &get_or_throw(const std::variant<Ts...> &v) {
   if (const auto ptr = std::get_if<T>(&v)) {
@@ -43,6 +43,6 @@ public:
       : std::runtime_error("Network error: " + message) {}
 };
 
-} // namespace utils::exception
+} // namespace common_utils::exception
 
 #endif

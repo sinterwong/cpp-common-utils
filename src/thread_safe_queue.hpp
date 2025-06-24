@@ -6,7 +6,7 @@
 #include <optional>
 #include <queue>
 
-namespace utils {
+namespace common_utils {
 
 template <typename T> class ThreadSafeQueue {
 public:
@@ -132,6 +132,6 @@ private:
   std::priority_queue<T, std::vector<T>, Compare> queue_;
   std::condition_variable cv_;
 };
-} // namespace utils
+} // namespace common_utils
 
 #endif

@@ -19,7 +19,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace utils {
+namespace common_utils {
 
 template <class BaseClass> class Factory {
 public:
@@ -75,6 +75,6 @@ private:
   std::map<std::string, Creator> creatorRegistry;
 };
 
-} // namespace utils
+} // namespace common_utils
 
 #endif

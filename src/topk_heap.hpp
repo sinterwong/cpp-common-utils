@@ -19,7 +19,7 @@
 #include <utility>
 #include <vector>
 
-namespace utils {
+namespace common_utils {
 template <typename T, typename Compare = std::greater<T>> class TopKHeap {
 private:
   size_t capacity_ = 15;
@@ -166,5 +166,5 @@ public:
   }
 };
 
-} // namespace utils
+} // namespace common_utils
 #endif

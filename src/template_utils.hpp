@@ -4,7 +4,7 @@
 #include <functional>
 #include <vector>
 
-namespace utils::tpl {
+namespace common_utils::tpl {
 
 template <typename T> struct get_first_arg_type;
 
@@ -19,6 +19,6 @@ template <typename T> struct get_vector_element_type<std::vector<T>> {
   using type = T;
 };
 
-} // namespace utils::tpl
+} // namespace common_utils::tpl
 
 #endif

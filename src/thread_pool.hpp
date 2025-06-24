@@ -23,7 +23,7 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
-namespace utils {
+namespace common_utils {
 
 class task {
 public:
@@ -214,5 +214,5 @@ private:
   std::condition_variable not_full_;
   std::condition_variable not_empty_;
 };
-} // namespace utils
+} // namespace common_utils
 #endif

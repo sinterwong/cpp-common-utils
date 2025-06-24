@@ -18,7 +18,7 @@
 #include <sstream>
 #include <string>
 
-namespace utils {
+namespace common_utils {
 class MemoryAnalyzer {
 public:
   struct AnalysisResult {
@@ -187,6 +187,6 @@ public:
     return result;
   }
 };
-} // namespace utils
+} // namespace common_utils
 
 #endif

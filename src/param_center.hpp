@@ -13,7 +13,7 @@
 
 #include <algorithm>
 #include <variant>
-namespace utils {
+namespace common_utils {
 template <typename P> class ParamCenter {
 public:
   using Params = P;
@@ -31,6 +31,6 @@ public:
 private:
   Params params_;
 };
-} // namespace utils
+} // namespace common_utils
 
 #endif

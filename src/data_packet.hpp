@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace utils {
+namespace common_utils {
 using DataPacketId = uint64_t;
 
 struct DataPacket {
@@ -60,6 +60,6 @@ struct DataPacket {
     params[key] = std::move(value);
   }
 };
-} // namespace utils
+} // namespace common_utils
 
 #endif
