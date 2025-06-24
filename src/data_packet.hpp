@@ -59,6 +59,25 @@ struct DataPacket {
   template <typename T> void setParam(const std::string &key, T value) {
     params[key] = std::move(value);
   }
+
+  bool has(const std::string &key) const { return params.count(key) > 0; }
+
+  template <typename T> bool has() const {
+    for (const auto &pair : params) {
+      if (pair.second.type() == typeid(T)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  template <typename T> bool has(const std::string &key) const {
+    auto it = params.find(key);
+    if (it == params.end()) {
+      return false;
+    }
+    return it->second.type() == typeid(T);
+  }
 };
 } // namespace common_utils
 
