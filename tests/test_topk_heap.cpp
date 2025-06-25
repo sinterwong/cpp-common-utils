@@ -1,4 +1,4 @@
-#include "common_utils/topk_heap.hpp"
+#include "topk_heap.hpp"
 #include "gtest/gtest.h"
 
 namespace topk_heap_test {

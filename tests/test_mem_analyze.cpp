@@ -11,7 +11,7 @@
 
 #include <gtest/gtest.h>
 
-#include "common_utils/mem_analyze.hpp"
+#include "mem_analyze.hpp"
 
 class MemoryAnalyzeTest : public ::testing::Test {
 protected:

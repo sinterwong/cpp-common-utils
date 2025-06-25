@@ -43,18 +43,19 @@ MESSAGE(STATUS "Your target arch : ${TARGET_ARCH}")
 MESSAGE(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
 
 MESSAGE(INFO "--------------------------------")
-SET(PROJECT_OUTPUT_DIR  ${PROJECT_BINARY_DIR}/${TARGET_ARCH})
-SET(PROJECT_INCLUDE_DIR ${PROJECT_OUTPUT_DIR}/include)
-
-FILE(MAKE_DIRECTORY ${PROJECT_INCLUDE_DIR})
-FILE(MAKE_DIRECTORY ${PROJECT_OUTPUT_DIR}/bin)
+# Set output directories for build artifacts
+SET(PROJECT_OUTPUT_DIR ${PROJECT_BINARY_DIR}/${TARGET_ARCH}) # Custom output directory
+FILE(MAKE_DIRECTORY ${PROJECT_OUTPUT_DIR}/bin) # Ensure bin directory exists if other executables are defined here
 
 MESSAGE("-- system arch:  ${CMAKE_SYSTEM_PROCESSOR}")
 MESSAGE("-- output path:  ${PROJECT_OUTPUT_DIR}")
 
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}/bin)
-SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}/lib)
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}/lib)
+# Standard CMake variables for output locations.
+# For a library, these are less critical if not building shared/static libs here,
+# but good practice if other binaries/libraries are added to the root project.
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Build 3rdparty
 MESSAGE(INFO "3rdparty libraries has loaded.")
@@ -66,6 +67,18 @@ MESSAGE(INFO "--------------------------------")
 ADD_SUBDIRECTORY(src)
 
 IF(BUILD_TESTS)
+    enable_testing() # Enable testing framework
     MESSAGE(INFO "--------------------------------")
     ADD_SUBDIRECTORY(tests)
 ENDIF()
+
+# Installation of CMake package config files
+# This allows other CMake projects to find and use this library via find_package(common_utils)
+install(EXPORT common_utils_targets
+    FILE
+        common_utils-config.cmake
+    NAMESPACE
+        common_utils::
+    DESTINATION
+        ${CMAKE_INSTALL_LIBDIR}/cmake/common_utils
+)
