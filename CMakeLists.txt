@@ -5,11 +5,11 @@ PROJECT(CppCommonUtils VERSION 1.0.0 LANGUAGES CXX)
 
 SET(CMAKE_CXX_STANDARD 20)
 
-OPTION(BUILD_TESTS "Build with tests" OFF)
+OPTION(CPP_COMMON_UTILS_BUILD_TESTS "Build with tests for CppCommonUtils" OFF)
 
 MESSAGE(INFO "--------------------------------")
 MESSAGE(STATUS "Build CppCommonUtils: ${AI_WORKFLOW_VERSION}")
-MESSAGE(STATUS "Build with tests: ${BUILD_TESTS}")
+MESSAGE(STATUS "Build with tests for CppCommonUtils: ${CPP_COMMON_UTILS_BUILD_TESTS}")
 MESSAGE(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 MESSAGE(STATUS "CMAKE_CXX_STANDARD: ${CMAKE_CXX_STANDARD}")
 
@@ -66,7 +66,7 @@ ADD_SUBDIRECTORY(3rdparty)
 MESSAGE(INFO "--------------------------------")
 ADD_SUBDIRECTORY(src)
 
-IF(BUILD_TESTS)
+IF(CPP_COMMON_UTILS_BUILD_TESTS)
     enable_testing() # Enable testing framework
     MESSAGE(INFO "--------------------------------")
     ADD_SUBDIRECTORY(tests)

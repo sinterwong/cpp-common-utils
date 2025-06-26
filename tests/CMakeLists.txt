@@ -19,15 +19,15 @@ MESSAGE(STATUS "APP SOURCES: ${CURRENT_DIR_SRCS}")
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}/bin/tests)
 FILE(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}) # Ensure the directory exists
 
-ADD_EXECUTABLE(main ${CURRENT_DIR_SRCS})
+ADD_EXECUTABLE(cpp_common_utils_tests ${CURRENT_DIR_SRCS})
 # No need for target_include_directories for common_utils, it's handled by target_link_libraries.
 # If there were other specific include directories for tests, they would go here.
 # No need for target_include_directories for common_utils, it's handled by target_link_libraries.
 # If there were other specific include directories for tests, they would go here.
-TARGET_LINK_LIBRARIES(main PRIVATE ${DEPENDENCY_LIBS})
+TARGET_LINK_LIBRARIES(cpp_common_utils_tests PRIVATE ${DEPENDENCY_LIBS})
 
 # Discover and add tests to CTest
 include(GoogleTest)
-gtest_discover_tests(main)
+gtest_discover_tests(cpp_common_utils_tests)
 
-INSTALL(TARGETS main DESTINATION tests) # Installs test executable to <prefix>/tests
+INSTALL(TARGETS cpp_common_utils_tests DESTINATION tests) # Installs test executable to <prefix>/tests
